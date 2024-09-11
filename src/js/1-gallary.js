@@ -4,6 +4,9 @@ import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+
+
+
 const images = [
     {
       preview:
@@ -69,19 +72,17 @@ const images = [
       description: 'Lighthouse Coast Sea',
     },
   ];
-
   
 const container = document.querySelector('.gallery');
 container.insertAdjacentHTML("beforeend", addСards(images));
 function addСards(images){
     return images.map(image => {
-        return `
+            return `
     <li class="gallery-item">
-        <a class="gallery-link" href= "${image.original}">
+        <a class="gallery-link" href="${image.original}">
             <img
             class="gallery-image"
             src="${image.preview}"
-            data-source="${image.original}"
             alt="${image.description}"
              />
         </a>
@@ -89,27 +90,11 @@ function addСards(images){
     })
    .join('');
 }
+console.log(container);
 
-//   function handleImg (event) {
-//        event.preventDefault();
-        
-//     if (event.target.classList.contains('gallery-image')) {
-//         const largeImageUrl = event.target.dataset.source;
-//         openModal(largeImageUrl);
-//       }
-//     };
-    
-//        function openModal(imageUrl) {
-//       const instance = basicLightbox.create(`
-//         <img src="${imageUrl}" >
-//       `);
-    
-//       instance.show();
-//  };
- 
-//  container.addEventListener('click', handleImg);
- 
-
-
- 
+ const gallery = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250,
+    });
 
